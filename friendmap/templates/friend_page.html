@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static "jquery-1.11.3.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "rivets.bundled.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "watch.js" %}"></script>
+    <script type="text/javascript" src="{% static "vis.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "jquery.cookie.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "bootstrap-theme.min.css" %}">
+    <script src="{% static "bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "friend_script.js" %}"></script>
+    <script type="text/javascript" src="{% static "login_script.js" %}"></script>
+    <script>
+        if ($.cookie('loggedin')=='admin') {
+            window.location.replace("/admin_page");
+        }
+        if (!$.cookie('loggedin')) {
+            window.location.replace("/login_form");
+        }
+    </script>
+</head>
+<body>
+<div class="dropdown">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 15px;">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <div class="error-signal">
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login()">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="signup()">Sign up</button>
+            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="logout()">Logout</button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <section class="title">
+                <h2 id="my_username">hello </h2>
+                <h3>add some friends</h3>
+            </section>
+            <br/>
+            <br/>
+            <section id="form" class="form-group">
+                <div class="form-group">
+                    <label for="username">type their name here:</label>
+                    <input id="username" type="text" name="username" class="form-control">
+                </div>
+            </section>
+            <section id="results">
+                <ul>
+                    <li rv-each-name="results.users">
+                        <button class="btn btn-primary" onclick="add_friend_click(this)">{name}</button>
+                        <br/>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <div id="graph" style="height:500px"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

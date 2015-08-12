@@ -1,0 +1,5 @@
+.idea*
+**.pyc
+db.sql*
+**.DS_Store
+/static/
