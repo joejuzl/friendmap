@@ -57,3 +57,6 @@ Some things that would be required:
 * A proper database, e.g. postgres, running in a seperate container
 * A proper http server, e.g. nginx, to server static files
 * Testing for the javascript and end-to-end tests
+* Logging
+* Automated build process, e.g. paver
+* Better error handling, custom exceptions.
