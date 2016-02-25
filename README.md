@@ -54,7 +54,7 @@ Sign in as admin (password is changme for docker, or what you set it too) to see
 This is by no means prod ready.
 Some things that would be required:
 
-* A proper database, e.g. postgres, running in a seperate container
+* A proper database, e.g. postgres
 * A proper http server, e.g. nginx, to server static files
 * Testing for the javascript and end-to-end tests
 * Logging
